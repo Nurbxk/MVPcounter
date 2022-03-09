@@ -26,7 +26,20 @@ counterView.updateCounter(counterModel.getCount());
 counterModel.decrement();
 counterView.updateCounter(counterModel.getCount());
     }
+    @Override
+    public void checkConditionForToast() {
+        if (counterModel.getCount() == 5) {
+            counterView.showToast();
+        }
+    }
 
+    @Override
+    public void checkConditionForTextColor() {
+        if( counterModel.getCount() == 10){
+            counterView.changeTextColor();
+
+        }
+    }
 
 
     @Override

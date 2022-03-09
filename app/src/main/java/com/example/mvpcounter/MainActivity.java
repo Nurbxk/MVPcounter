@@ -25,23 +25,32 @@ initclickers();
     private void initclickers() {
         binding.decrement.setOnClickListener(v -> {
         counterPresenter.decrement();
+            counterPresenter.checkConditionForTextColor();
+            counterPresenter.checkConditionForToast();
         });
 
 
 
         binding.increment.setOnClickListener(v -> {
             counterPresenter.increment();
+            counterPresenter.checkConditionForTextColor();
+            counterPresenter.checkConditionForToast();
         });
         }
+
 
     @Override
     public void updateCounter(int counter) {
         binding.tvCounter.setText(String.valueOf(counter));
-            if(counter == 5){
-                Toast.makeText(getApplicationContext(), "You reached 5th level", Toast.LENGTH_SHORT).show();
-            }
-            else if (counter == 10){
-                binding.tvCounter.setTextColor(Color.BLACK);
-            }
+    }
+
+    @Override
+    public void showToast() {
+        Toast.makeText(this, "You reached 10th level", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void changeTextColor() {
+        binding.tvCounter.setTextColor(Color.rgb(40,0,0));
     }
 }
